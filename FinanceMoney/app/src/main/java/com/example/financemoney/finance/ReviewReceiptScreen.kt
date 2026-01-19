@@ -16,10 +16,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.financemoney.ui.theme.BackgroundDark
+import com.example.financemoney.ui.theme.GoldPrimary
+import com.example.financemoney.ui.theme.SurfaceDark
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun TransactionsScreen() {
+fun ReviewReceiptScreen() {
     val groups = listOf(
         TransactionGroup("Today", "-$45.00", emptyList()), // Placeholder items
         TransactionGroup("Yesterday", "-$12.00", emptyList())

@@ -8,11 +8,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 
 import com.example.financemoney.ui.theme.BackgroundDark
+import com.example.financemoney.ui.theme.FinTrackTheme
 import com.example.financemoney.ui.theme.GoldPrimary
 
 @Composable
@@ -28,7 +28,7 @@ fun FinTrackApp() {
         }
     }
 
-    _root_ide_package_.finance.FinTrackTheme {
+    FinTrackTheme {
         Scaffold(
             bottomBar = {
                 // Chỉ hiện BottomBar ở các màn hình chính
@@ -116,7 +116,12 @@ fun FinTrackApp() {
                     })
 
                     Screen.DASHBOARD -> DashboardScreen()
-                    Screen.TRANSACTIONS -> _root_ide_package_.finance.TransactionsScreen()
+                    Screen.TRANSACTIONS -> TransactionsScreen { screen ->
+                        when (screen) {
+                            Screen.ADD_TRANSACTION -> showAddDialog = true
+                            else -> currentScreen = screen
+                        }
+                    }
                     Screen.INSIGHTS -> InsightsScreen()
                     Screen.PROFILE -> ProfileScreen() // Sẽ được triển khai sau nếu cần
                     else -> DashboardScreen()
@@ -127,38 +132,5 @@ fun FinTrackApp() {
         if (showAddDialog) {
             AddTransactionScreen(onClose = { showAddDialog = false })
         }
-    }
-}
-
-// Placeholder cho OnboardingScreen
-@Composable
-fun OnboardingScreen(onContinue: () -> Unit) {
-    Box(
-        modifier = androidx.compose.ui.Modifier
-            .fillMaxSize()
-            .background(BackgroundDark),
-        contentAlignment = androidx.compose.ui.Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
-            modifier = androidx.compose.ui.Modifier.padding(24.dp)
-        ) {
-            Text("Track expenses with ease", fontSize = 28.sp, fontWeight = FontWeight.Bold, color = Color.White)
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(
-                onClick = onContinue,
-                colors = ButtonDefaults.buttonColors(containerColor = GoldPrimary)
-            ) {
-                Text("Get Started", color = Color.Black)
-            }
-        }
-    }
-}
-
-@Composable
-fun ProfileScreen() {
-    // UI Profile cơ bản
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Settings", style = MaterialTheme.typography.headlineLarge)
     }
 }

@@ -21,6 +21,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.financemoney.ui.theme.BackgroundDark
+import com.example.financemoney.ui.theme.ErrorRed
+import com.example.financemoney.ui.theme.GoldPrimary
+import com.example.financemoney.ui.theme.InfoBlue
+import com.example.financemoney.ui.theme.SuccessGreen
+import com.example.financemoney.ui.theme.SurfaceDark
 
 @Composable
 fun ProfileScreen() {
