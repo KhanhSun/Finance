@@ -30,6 +30,7 @@ import com.example.financemoney.ui.theme.SurfaceDark
 
 @Composable
 fun ProfileScreen() {
+    // TODO: Keep profile data hardcoded for now; Firebase hookup will be added later.
     Column(
         modifier = Modifier
             .fillMaxSize()
