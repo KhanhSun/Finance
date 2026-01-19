@@ -16,6 +16,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage // Giả định dùng Coil để load ảnh từ URL
+import com.example.financemoney.ui.theme.BackgroundDark
+import com.example.financemoney.ui.theme.GoldPrimary
+import com.example.financemoney.ui.theme.SeparatorDark
 
 @Composable
 fun OnboardingScreen(onContinue: () -> Unit) {
