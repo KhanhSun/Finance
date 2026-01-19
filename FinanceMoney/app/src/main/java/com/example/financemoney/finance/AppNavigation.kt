@@ -1,18 +1,39 @@
 package com.example.financemoney.finance
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Dashboard
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.PieChart
+import androidx.compose.material.icons.filled.Receipt
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 
 import com.example.financemoney.ui.theme.BackgroundDark
+import com.example.financemoney.ui.theme.FinTrackTheme
 import com.example.financemoney.ui.theme.GoldPrimary
 
 @Composable
@@ -28,7 +49,7 @@ fun FinTrackApp() {
         }
     }
 
-    _root_ide_package_.finance.FinTrackTheme {
+    FinTrackTheme {
         Scaffold(
             bottomBar = {
                 // Chỉ hiện BottomBar ở các màn hình chính
@@ -116,9 +137,9 @@ fun FinTrackApp() {
                     })
 
                     Screen.DASHBOARD -> DashboardScreen()
-                    Screen.TRANSACTIONS -> _root_ide_package_.finance.TransactionsScreen()
+                    Screen.TRANSACTIONS -> TransactionsScreen(onNavigate = { currentScreen = it })
                     Screen.INSIGHTS -> InsightsScreen()
-                    Screen.PROFILE -> ProfileScreen() // Sẽ được triển khai sau nếu cần
+                    Screen.PROFILE -> ProfileScreen()
                     else -> DashboardScreen()
                 }
             }
@@ -127,38 +148,5 @@ fun FinTrackApp() {
         if (showAddDialog) {
             AddTransactionScreen(onClose = { showAddDialog = false })
         }
-    }
-}
-
-// Placeholder cho OnboardingScreen
-@Composable
-fun OnboardingScreen(onContinue: () -> Unit) {
-    Box(
-        modifier = androidx.compose.ui.Modifier
-            .fillMaxSize()
-            .background(BackgroundDark),
-        contentAlignment = androidx.compose.ui.Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
-            modifier = androidx.compose.ui.Modifier.padding(24.dp)
-        ) {
-            Text("Track expenses with ease", fontSize = 28.sp, fontWeight = FontWeight.Bold, color = Color.White)
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(
-                onClick = onContinue,
-                colors = ButtonDefaults.buttonColors(containerColor = GoldPrimary)
-            ) {
-                Text("Get Started", color = Color.Black)
-            }
-        }
-    }
-}
-
-@Composable
-fun ProfileScreen() {
-    // UI Profile cơ bản
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Settings", style = MaterialTheme.typography.headlineLarge)
     }
 }

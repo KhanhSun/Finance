@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 
 import com.example.financemoney.ui.theme.BackgroundDark
 import com.example.financemoney.ui.theme.GoldPrimary
+import com.example.financemoney.ui.theme.GoldSecondary
 import com.example.financemoney.ui.theme.SeparatorDark
 
 @Composable

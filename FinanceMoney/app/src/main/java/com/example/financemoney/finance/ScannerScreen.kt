@@ -1,5 +1,4 @@
-
-package finance
+package com.example.financemoney.finance
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -16,6 +15,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.financemoney.ui.theme.GoldPrimary
 
 @Composable
 fun ScannerScreen(onCancel: () -> Unit, onScan: () -> Unit) {
